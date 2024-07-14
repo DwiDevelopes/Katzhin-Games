@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--sedikit info dari game tersebut dev kami sudah bekerja sama dalam poki dan juga dwi membuat bersama dengan game terbaiknya masing masing untuk di publish secara gratis nantinya 
+ini demi kalian juga loh dev nya membuat ini dengan refreansi yang dev nya dapat-->
+<html>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L02W3ZMS5"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-7L02W3ZMS5');
+    </script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648726754785335"></script>
+<meta charset="utf-8"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<title>katzhin Comunity Hook</title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport"/>
+<style>
+      html,
+      body {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+      }
+      canvas {
+        width: 100%;
+      }
+    </style>
+<!-- Dwi bakti N Dev SDK -->
+<script src="dwibaktidev.js"></script>
+</head>
+      <h2 class="playing"><span class="song-name"></span></h2>
+      <div class="controls">
+        <button class="btn previous"><i class='bx bx-skip-previous'></i></button>
+        <button class="btn play-pause">
+          <i id="bx bx-pause" class="bx bxl-play-store"></i>
+        </button>
+        <button class="btn next"><i class='bx bx-skip-next' ></i></button>
+      </div>
+    <style>
+  
+  .btn {
+  
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .controls {
+    display: flex;
+         position: fixed;
+        top: 93%;
+        z-index: 5000;
+    right: 48%;
+  }
+  
+  .btn:hover {
+    color: crimson;
+  }
+  
+  .playing {
+    text-align: center;
+      display: flex;
+         position: fixed;
+        top: 1%;
+        z-index: 5000;
+        right: 90px;
+  }
+    </style>
+<script>
+
+  const roygames = new Audio('Music/audio1.mp3');
+  const dwibaktindev = new Audio('Music/audio2.mp3');
+  const dwibaktindev2 = new Audio('Music/audio3.mp3');
+  const dwibaktindev3 = new Audio('Music/audio4.mp3');
+  const dwibaktindev4 = new Audio('Music/audio5.mp3');
+  const dwibaktindev5 = new Audio('Music/audio6.mp3');
+  const dwibaktindev6 = new Audio('Music/audio7.mp3');
+  const dwibaktindev7 = new Audio('Music/audio8.mp3');
+  const dwibaktindev8 = new Audio('Music/audio9.mp3');
+  const dwibaktindev9 = new Audio('Music/audio10.mp3');
+  const dwibaktindev10 = new Audio('Music/audio11.mp3');
+  const dwibaktindev11 = new Audio('Music/audio12.mp3');
+  const dwibaktindev12 = new Audio('Music/audio13.mp3');
+  const dwibaktindev13 = new Audio('Music/audio14.mp3');
+  const dwibaktindev14 = new Audio('Music/audio15.mp3');
+  const dwibaktindev15 = new Audio('Music/audio16.mp3');
+  const dwibaktindev16 = new Audio('Music/audio17.mp3');
+  const dwibaktindev17 = new Audio('Music/audio18.mp3');
+  const dwibaktindev18 = new Audio('Music/audio19.mp3');
+  const dwibaktindev19 = new Audio('Music/audio20.mp3');
+  const dwibaktindev20 = new Audio('Music/audio21.mp3');
+  
+  // selecting elements
+  const prevBtn = document.querySelector('.previous');
+  const playBtn = document.querySelector('.play-pause');
+  const nextBtn = document.querySelector('.next');
+  const songName = document.querySelector('.song-name');
+  const playPauseIcon = document.querySelector('#play-pause-icon');
+  
+  
+  const songs = [
+    { ele: roygames, audioName: '' },
+    { ele: dwibaktindev, audioName: '' },
+      { ele: dwibaktindev2, audioName: '' },
+          { ele: dwibaktindev3, audioName: '' },
+          { ele: dwibaktindev4, audioName: '' },
+          { ele: dwibaktindev5, audioName: '' },
+          { ele: dwibaktindev6, audioName: '' },
+          { ele: dwibaktindev7, audioName: '' },
+          { ele: dwibaktindev8, audioName: '' },
+          { ele: dwibaktindev9, audioName: '' },
+          { ele: dwibaktindev10, audioName: '' },
+          { ele: dwibaktindev11, audioName: '' },
+          { ele: dwibaktindev12, audioName: '' },
+          { ele: dwibaktindev13, audioName: '' },
+          { ele: dwibaktindev14, audioName: '' },
+          { ele: dwibaktindev15, audioName: '' },
+          { ele: dwibaktindev16, audioName: '' },
+          { ele: dwibaktindev17, audioName: '' },
+          { ele: dwibaktindev18, audioName: '' },
+          { ele: dwibaktindev19, audioName: '' },
+          { ele: dwibaktindev20, audioName: '' },
+  ];
+  
+  for(const song of songs) {
+    song.ele.addEventListener('ended', ()=> {
+      updateSong('.next');
+      playPauseSong();
+    })
+  }
+  
+  let current = 0;
+  let currentSong = songs[current].ele;
+  songName.textContent = songs[current].audioName;
+  
+  playBtn.addEventListener('click',()=> {
+    playPauseSong();
+  })
+  
+  nextBtn.addEventListener('click', () => {
+    updateSong('.next');
+    playPauseSong();
+  });
+  
+  prevBtn.addEventListener('click', () => {
+    updateSong('.prev');
+    playPauseSong();
+  });
+  
+  const updateSong = (action)=> {
+    currentSong.pause();
+    currentSong.currentTime = 0;
+  
+    if(action === '.next'){
+      current++;
+      if(current > songs.length -1) current = 0;
+    }
+    if(action === '.prev'){
+      current--;
+      if(current < 0) current = songs.length - 1;
+    }
+    currentSong = songs[current].ele;
+    songName.textContent = songs[current].audioName;
+  }
+  
+  const playPauseSong = ()=> {
+    if(currentSong.paused){
+      currentSong.play();
+      playPauseIcon.className = 'bx bx-pause';
+    }
+    else {
+      currentSong.pause();
+      playPauseIcon.className = 'bx bxl-play-store';
+    }
+  }
+    </script>
+<body>
+<script src="Dwibaktindev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<button class="show-popup">katzhin</button>
+
+<div class="popup-container">
+    <div class="popup-box">
+        <h1>Hello Sahabat katzhin!</h1>
+        <center><img src="Katzhin Comunity.jpg"height="100"width="200"style="border-radius:10px;"/></center>
+        <p>Game ini di buat oleh "dwi bakti n dev" Tanpa Team dan tidak di cap untuk dwi yang buat karna game ini untuk kita bersama dan juga kalian bisa menikmati game yang kami buat di dalamnya jikalau kalian suka game kami jangan lupa lihat berita sejarah kami !!😎😎</p>
+        <center><a href="katzhin web.html">Berita Katzhin Comunity</a></center>
+        <video width="320" height="140" controls>
+          <source src="video clipt.mp4" type="video/mp4">
+        </video>
+        <center><a href="DLC Games.html">DLC Katzhin Comunity Hook</a></center>
+        <button class="close-btn">OK</button>
+    </div>
+</div>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+.show-popup {
+  padding: 10px 20px;
+  background: #6e78ff;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 18px;
+  color: #f2f2f2;
+  font-weight: 500;
+  position: absolute;
+right: 160px;
+  z-index: 4000;
+  
+}
+
+.popup-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup-container.active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: .4s ease;
+}
+
+.popup-container .popup-box {
+  width: 320px;
+  height: 600px;
+  background: #f2f2f2;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  padding: 33px;
+  transform: scale(0);
+  z-index: 7000;
+}
+
+.popup-container.active .popup-box {
+  transform: scale(1);
+  transition: .4s ease;
+  transition-delay: .25s;
+}
+
+.popup-box h1 {
+  color: #333;
+  line-height: 1;
+}
+
+.popup-box p {
+  color: #333;
+  margin: 12px 0 20px;
+}
+
+.popup-box .close-btn {
+  width: 100%;
+  height: 45px;
+  background: #6e78ff;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 18px;
+  color: #f2f2f2;
+  font-weight: 500;
+}
+</style>
+<script src="script.js"></script>
+</body>
+</html>
